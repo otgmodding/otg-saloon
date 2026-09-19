@@ -1,46 +1,57 @@
 fx_version 'cerulean'
+
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
+
 game 'rdr3'
 
 author 'OTG Modding'
-description 'otg-saloons'
-version '1.0.0'
+description 'OTG Saloon V2 - in-game business creator for RSG Core / RedM'
+version '2.6.0'
+
+lua54 'yes'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'shared/utils.lua',
-    'config.lua',
+    'shared/config.lua'
+}
+
+ui_page 'web/index.html'
+
+files {
+    'web/index.html',
+    'web/style.css',
+    'web/app.js',
+    'locales/**'
 }
 
 client_scripts {
-    -- client/*.lua already includes zone_editor.lua, loading it twice made the
-    -- file's event handlers register twice.
-    'client/*.lua',
+    'client/main.lua',
+    'client/creator.lua',
+    'client/consumables.lua',
+    'client/freight.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-   'server/*.lua',
-}
-
-files {
-    'install.sql',
-    'data/saloons_data.json',
+    'server/main.lua',
+    'server/businesses.lua',
+    'server/fivemanage.lua',
+    'server/consumables.lua',
+    'server/crafting.lua',
+    'server/shipments.lua'
 }
 
 dependencies {
     'rsg-core',
-    'rsg-inventory',
     'ox_lib',
-    'ox_target',
     'oxmysql',
-    'xsound',
-    'PolyZone', -- Add PolyZone dependency
+    'ox_target',
+    'rsg-inventory'
 }
 
 escrow_ignore {
-'config.lua',
-
+    'install/*',
+    'locales/*',
+    'shared/*',
+    'README.md'
 }
-
-lua54 'yes'

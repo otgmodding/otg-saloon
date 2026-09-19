@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OTG Saloon Administration</title><link rel="stylesheet" href="style.css"></head>
+<body><div id="app" class="hidden">
+<main class="ledger">
+<header><div class="brand"><span class="brandMark">OTG</span><div><h1>SALOON WORKS</h1></div></div>
+<div id="crumb" class="crumb">BUSINESS DIRECTORY</div><button id="close" class="iconBtn">×</button></header>
+
+<section id="directory" class="screen">
+<div class="hero"><div><h2>Business Directory</h2><p>Create, inspect and maintain every OTG business from one place.</p></div>
+<button id="newBusiness" class="primary">+ NEW BUSINESS</button></div>
+<div class="toolbar"><input id="search" placeholder="Search name, job, slug or owner…"><select id="filter"><option value="all">All businesses</option><option value="active">Active</option><option value="inactive">Inactive</option></select><span id="directoryCount"></span></div>
+<div id="businessGrid" class="businessGrid"></div>
+</section>
+
+<section id="workspace" class="screen hidden">
+<aside><button id="backDirectory" class="back">← ALL BUSINESSES</button><div class="identity"><span id="businessMonogram">OTG</span><h3 id="sideName">New Business</h3><small id="sideJob">NOT SAVED</small></div>
+<nav>
+<span>FOUNDATION</span><button data-page="overview" class="active">Overview</button><button data-page="general">Identity & Ownership</button><button data-page="storage">Storage & Map</button>
+<span>FLOOR PLAN</span><button data-page="stations">Stations & Props <b id="stationBadge">0</b></button>
+<span>MENU BOOK</span><button data-page="recipes">Recipes <b id="recipeBadge">0</b></button>
+
+</nav></aside>
+<div class="work">
+<div id="overview" class="page active"><div class="pageHead"><span class="eyebrow">COMMAND DESK</span><h2 id="overviewName">New Business</h2><p>A single view of this property's configuration.</p></div><div id="metrics" class="metrics"></div><div class="callout"><b>Creator workflow</b><span>Configure the identity, map/storage, physical stations and menu. Changes remain server-authoritative.</span></div></div>
+<div id="general" class="page"><div class="pageHead"><span class="eyebrow">FOUNDATION</span><h2>Identity & Ownership</h2></div><div class="formGrid"><label>Business Name<input id="label" maxlength="100"></label><label>Slug<input id="slug" maxlength="64"></label><label>RSG Job<input id="job" maxlength="64"></label><label>Owner Citizen ID<input id="owner" maxlength="64"></label></div><label class="switch"><input type="checkbox" id="active"><span>Business is active and visible to players</span></label></div>
+<div id="storage" class="page"><div class="pageHead"><span class="eyebrow">PROPERTY</span><h2>Storage & Map</h2></div><div class="formGrid"><label>Storage Weight<input id="storageWeight" type="number"></label><label>Storage Slots<input id="storageSlots" type="number"></label><label>Blip Sprite<div class="inline"><input id="blipSprite"><button id="browseBlips" type="button">BROWSE</button></div></label><label>Blip Scale<input id="blipScale" type="number" step=".05"></label></div><button id="usePosition" class="ghost">SET BLIP TO MY CURRENT POSITION</button></div>
+<div id="stations" class="page"><div class="pageHead row"><div><span class="eyebrow">FLOOR PLAN</span><h2>Stations & Props</h2><p>Physical prop and interaction zone are independent.</p></div><button id="addStation" class="primary">+ ADD STATION</button></div><div id="stationList" class="records"></div></div>
+<div id="recipes" class="page"><div class="pageHead row"><div><span class="eyebrow">MENU BOOK</span><h2>Recipes</h2><p>Recipe outputs are validated against RSG Core shared items.</p></div><button id="addRecipe" class="primary">+ ADD RECIPE</button></div><div id="recipeList" class="records"></div></div>
+</div><footer><span id="dirty">NO UNSAVED CHANGES</span><div><button id="deleteBusiness" class="danger">DELETE BUSINESS</button><button id="save" class="primary">SAVE BUSINESS</button></div></footer>
+</section>
+<div id="modal" class="modal hidden"><div class="dialog"><div class="dialogHead"><div><span class="eyebrow">OTG EDITOR</span><h2 id="modalTitle"></h2></div><button id="modalClose" class="iconBtn">×</button></div><div id="modalBody"></div></div></div>
+</main></div><script src="app.js"></script></body></html>
